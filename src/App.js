@@ -8,7 +8,7 @@ import Subscription from './component/Subscription';
 import Lumsump from './component/Lumsump';
 import {BiBath, BiDesktop} from 'react-icons/bi'
 import {IoIosArrowForward} from 'react-icons/io'
-import './app.css'
+import './App.css'
 const App = () => {
 
     const [changePath, setChangePath]=useState("all")

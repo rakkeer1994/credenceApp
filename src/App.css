@@ -58,3 +58,10 @@ border-right: 1px solid lightblue;
 .detailBtn{
     margin-left: 2%;
 }
+
+
+td {
+    border:1px solid black;
+    column-span: 0;
+
+  }
