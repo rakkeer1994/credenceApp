@@ -5,11 +5,30 @@ import data from './data.json'
 
 
 const All = () => {
-  console.log(data)
+  // console.log(data)
   return (
     <div>
-        <h1>all component</h1>
-        <table>
+        {/* <h1>all component</h1> */}
+        {
+          data.map((val, ind)=>{
+            return(
+              <div className='priceList'>
+                   <div style={{fontWeight:"bold"}}>pricing option {ind+1}</div>
+                  <div>{val.profit}</div>
+                  <div>{val.amount}</div>
+                  <div>{val.pricingModel}</div>
+                  <div>{val.status}</div>
+              </div>
+            )
+          })
+        }
+    </div>
+  )
+}
+
+export default All
+
+{/* <table>
           <tbody>
             {
               data.map((val)=>{
@@ -27,9 +46,4 @@ const All = () => {
               })
             }
           </tbody>
-        </table>
-    </div>
-  )
-}
-
-export default All
+        </table> */}

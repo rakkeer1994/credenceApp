@@ -1,0 +1,16 @@
+[
+    {
+        "pricingModel": "Subscription",
+        "status": "Inactive",
+        "amount": "2000/year",
+        "pricing": "pricing option 1",
+        "profit": "profit margin is variable"
+      },
+      {
+        "pricingModel": "Subscription",
+        "status": "active",
+        "amount": "4000/year",
+        "pricing": "pricing option 2",
+        "profit": "10% profit margin "
+      }
+]

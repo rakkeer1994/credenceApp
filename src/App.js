@@ -3,15 +3,20 @@ import { AiOutlineBell } from "react-icons/ai";
 import {GiSofa} from 'react-icons/gi'
 
 
-import All from './component/All'
-import Subscription from './component/Subscription';
-import Lumsump from './component/Lumsump';
+import All from './component/all/All'
+import Subscription from './component/subscription/Subscription';
+import Lumsump from './component/lumsum/Lumsump';
+import Emi from './component/emi/Emi';
 import {BiBath, BiDesktop} from 'react-icons/bi'
 import {IoIosArrowForward} from 'react-icons/io'
 import './App.css'
+import SubsForm from './component/subscription/SubsForm';
+import AddProduct from './component/AddProduct';
 const App = () => {
 
     const [changePath, setChangePath]=useState("all")
+    const [showPopup, setShowPopup]=useState(false)
+    const [productPopup, setProductPopup]=useState(false)
   return (
     <div>
         <div className='headerDiv'>
@@ -24,25 +29,32 @@ const App = () => {
             </div>
         </div>
 
-        <div className='mainDiv'>
+        <div className='mainDiv' >
             <div className='maindivLeft'>
                 <div style={{marginTop:"12%"}}><div><GiSofa/> Sofa <IoIosArrowForward/></div>
                 <div><BiBath/> BathTub <IoIosArrowForward/></div>
                 <div><BiDesktop/> Desktop <IoIosArrowForward/></div></div>
-                <div style={{position:"absolute", bottom:"0"}}><button>Add New Product</button></div>
+                <div style={{position:"absolute", bottom:"0"}}><button style={{fontSize:"1.6rem",backgroundColor:"gray"}} onClick={()=>{setProductPopup(!productPopup)}}>Add New Product</button></div>
             </div>
             <div className='maindivRight'>
                 <div className='header'>
                   <div style={{marginTop:"2%", width:"88%"}}><button className='detailBtn' onClick={()=>setChangePath("all")}>All</button>
                   <button className='detailBtn' onClick={()=>setChangePath("subscription")}>Subscription</button>
-                  <button className='detailBtn' onClick={()=>setChangePath("lumsump")}>Lumsump</button></div>
-                  <div style={{position:"absolute", right:"0", marginTop:"2%"}}><button>Add More Pricing</button></div>
+                  <button className='detailBtn' onClick={()=>setChangePath("lumsump")}>Lumsump</button>
+                  <button className='detailBtn' onClick={()=>setChangePath("EMI")}>EMI</button> </div>
+                  <div style={{position:"absolute", right:"0", marginTop:"2%"}}>
+                      <button style={{fontSize:"1.6rem", backgroundColor:"gray"}} onClick={()=>{setShowPopup(!showPopup)}}>Add More Pricing</button></div>
                 </div>
                 <div className='table'>
+                    <div style={{height:"70vh"}} onClick={()=>{setShowPopup(false)}}  onClickCapture={()=>{setProductPopup(false)}}>
                     { changePath==="all" && <All/> }
                     { changePath==="subscription" && <Subscription/> }
                     { changePath==="lumsump" && <Lumsump/> }
+                    { changePath==="EMI" && <Emi/> }
+                    </div>
                 </div>
+               {showPopup ? <SubsForm/> :null} 
+               {productPopup ? <AddProduct/> : null}
             </div>
         </div>
     </div>
